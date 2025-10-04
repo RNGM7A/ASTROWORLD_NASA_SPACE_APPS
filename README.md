@@ -1,6 +1,6 @@
 # ASTROWORLD NASA Space Apps 🚀
 
-A comprehensive space biology research platform built for NASA Space Apps Challenge, featuring interactive data visualization, AI-powered research assistance, and advanced mouse simulation capabilities for space biology research.
+A comprehensive space biology research platform built for NASA Space Apps Challenge, featuring interactive data visualization, AI-powered research assistance, and advanced simulation capabilities for space biology research.
 
 ## 🌟 Overview
 
@@ -10,7 +10,7 @@ ASTROWORLD is an innovative web application designed to explore and analyze NASA
 
 - 🔬 **Interactive Data Explorer** - Browse and analyze NASA space biology research papers
 - 🤖 **AI Research Assistant** - Get intelligent insights and answers about research papers
-- 🐭 **Bion-M1 Mouse Simulator** - Simulate space conditions effects on biological systems
+- 🐭 **Interactive Simulator** - Simulate space conditions effects on biological systems
 - 📊 **Advanced Data Visualization** - Charts, graphs, and interactive dashboards
 - 🎯 **Research Insights** - Discover patterns and trends in space biology data
 - 🌙 **Dark Theme** - Optimized for extended research sessions
@@ -182,9 +182,9 @@ npm run dev         # Start development server with nodemon
 - Quick prompt suggestions for common queries
 - Context-aware responses based on paper content
 
-### 3. Bion-M1 Mouse Simulator
+### 3. Interactive Simulator
 - Simulate space conditions effects on biological systems
-- Adjust mission parameters (duration, genetic strain, activity level)
+- Adjust mission parameters
 - View real-time physiological changes
 - Compare different genetic strains
 - Longitudinal health predictions
