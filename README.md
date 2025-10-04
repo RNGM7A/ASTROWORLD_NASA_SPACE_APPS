@@ -2,8 +2,6 @@
 
 A comprehensive space biology research platform built for NASA Space Apps Challenge, featuring interactive data visualization, AI-powered research assistance, and advanced mouse simulation capabilities for space biology research.
 
-![ASTROWORLD NASA Space Apps](./banner.png)
-
 ## 🌟 Overview
 
 ASTROWORLD is an innovative web application designed to explore and analyze NASA's space biology research data. The platform combines cutting-edge data visualization, AI-powered research assistance, and interactive simulation tools to help researchers and space enthusiasts understand the effects of space conditions on biological systems.
