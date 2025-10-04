@@ -1,192 +1,271 @@
-# TailAdmin React - Free React Tailwind Admin Dashboard Template
+# ASTROWORLD NASA Space Apps 🚀
 
-TailAdmin is a free and open-source admin dashboard template built on **React and Tailwind CSS**, providing developers
-with everything they need to create a comprehensive, data-driven back-end,
-dashboard, or admin panel solution for upcoming web projects.
+A comprehensive space biology research platform built for NASA Space Apps Challenge, featuring interactive data visualization, AI-powered research assistance, and advanced mouse simulation capabilities for space biology research.
 
-With TailAdmin, you get access to all the necessary dashboard UI components, elements, and pages required to build a
-feature-rich and complete dashboard or admin panel. Whether you're building dashboard or admin panel for a complex web
-application or a simple website, TailAdmin is the perfect solution to help you get up and running quickly.
+![ASTROWORLD NASA Space Apps](./banner.png)
 
-![TailAdmin React.js Dashboard Preview](./banner.png)
+## 🌟 Overview
 
-## Overview
+ASTROWORLD is an innovative web application designed to explore and analyze NASA's space biology research data. The platform combines cutting-edge data visualization, AI-powered research assistance, and interactive simulation tools to help researchers and space enthusiasts understand the effects of space conditions on biological systems.
 
-TailAdmin provides essential UI components and layouts for building feature-rich, data-driven admin dashboards and
-control panels. It's built on:
+### Key Features
 
-- React 19
-- TypeScript
-- Tailwind CSS
+- 🔬 **Interactive Data Explorer** - Browse and analyze NASA space biology research papers
+- 🤖 **AI Research Assistant** - Get intelligent insights and answers about research papers
+- 🐭 **Bion-M1 Mouse Simulator** - Simulate space conditions effects on biological systems
+- 📊 **Advanced Data Visualization** - Charts, graphs, and interactive dashboards
+- 🎯 **Research Insights** - Discover patterns and trends in space biology data
+- 🌙 **Dark Theme** - Optimized for extended research sessions
 
-### Quick Links
+## 🛠️ Technology Stack
 
-- [✨ Visit Website](https://tailadmin.com)
-- [📄 Documentation](https://tailadmin.com/docs)
-- [⬇️ Download](https://tailadmin.com/download)
-- [🖌️ Figma Design File (Community Edition)](https://www.figma.com/community/file/1214477970819985778)
-- [⚡ Get PRO Version](https://tailadmin.com/pricing)
+### Frontend
+- **React 19** - Latest React with modern features
+- **TypeScript** - Type-safe development
+- **Vite** - Fast build tool and development server
+- **Tailwind CSS 4** - Utility-first CSS framework
+- **Framer Motion** - Smooth animations and transitions
 
-### Demos
+### Backend
+- **Node.js** - JavaScript runtime
+- **Express.js** - Web application framework
+- **OpenAI API** - AI-powered research assistance
+- **CORS** - Cross-origin resource sharing
 
-- [Free Version](https://free-react-demo.tailadmin.com/)
-- [Pro Version](https://react-demo.tailadmin.com)
+### Data Visualization
+- **ApexCharts** - Interactive charts and graphs
+- **Recharts** - Composable charting library
+- **Chart.js** - Simple yet flexible charting
+- **D3.js** - Data-driven document manipulation
 
-### Other Versions
+### UI Components
+- **Lucide React** - Beautiful icon library
+- **React Router** - Client-side routing
+- **React DnD** - Drag and drop functionality
+- **React Dropzone** - File upload handling
+- **React Window** - Virtual scrolling for large datasets
 
-- [HTML Version](https://github.com/TailAdmin/tailadmin-free-tailwind-dashboard-template)
-- [Next.js Version](https://github.com/TailAdmin/free-nextjs-admin-dashboard)
-- [Vue.js Version](https://github.com/TailAdmin/vue-tailwind-admin-dashboard)
+## 📋 Prerequisites
 
-## Installation
+Before you begin, ensure you have the following installed:
 
-### Prerequisites
+- **Node.js** 18.x or later (recommended: Node.js 20.x+)
+- **npm** or **yarn** package manager
+- **Git** for version control
 
-To get started with TailAdmin, ensure you have the following prerequisites installed and set up:
+## 🚀 Installation & Setup
 
-- Node.js 18.x or later (recommended to use Node.js 20.x or later)
-
-### Cloning the Repository
-
-Clone the repository using the following command:
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/TailAdmin/free-react-tailwind-admin-dashboard.git
+git clone https://github.com/RNGM7A/ASTROWORLD_NASA_SPACE_APPS.git
+cd ASTROWORLD_NASA_SPACE_APPS
 ```
 
-> Windows Users: place the repository near the root of your drive if you face issues while cloning.
+### 2. Install Frontend Dependencies
 
-1. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
 
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
+> **Note:** If you encounter peer dependency issues, use the `--legacy-peer-deps` flag:
+> ```bash
+> npm install --legacy-peer-deps
+> ```
 
-   > Use the `--legacy-peer-deps` flag, if you face issues while installing.
+### 3. Install Backend Dependencies
 
-2. Start the development server:
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
+```bash
+cd server
+npm install
+cd ..
+```
 
-## Components
+### 4. Environment Configuration
 
-TailAdmin is a pre-designed starting point for building a web-based dashboard using React.js and Tailwind CSS. The
-template includes:
+Create a `.env` file in the `server` directory:
 
-- Sophisticated and accessible sidebar
-- Data visualization components
-- Prebuilt profile management and 404 page
-- Tables and Charts(Line and Bar)
-- Authentication forms and input elements
-- Alerts, Dropdowns, Modals, Buttons and more
-- Can't forget Dark Mode 🕶️
+```bash
+cp server/env.example server/.env
+```
 
-All components are built with React and styled using Tailwind CSS for easy customization.
+Edit `server/.env` and add your OpenAI API key:
 
-## Feature Comparison
+```env
+OPENAI_API_KEY=your_openai_api_key_here
+PORT=3001
+```
 
-### Free Version
+### 5. Start the Application
 
-- 1 Unique Dashboard
-- 30+ dashboard components
-- 50+ UI elements
-- Basic Figma design files
-- Community support
+**Option 1: Start both servers simultaneously**
 
-### Pro Version
+```bash
+# Terminal 1 - Frontend
+npm run dev
 
-- 5 Unique Dashboards: Analytics, Ecommerce, Marketing, CRM, Stocks (more coming soon)
-- 400+ dashboard components and UI elements
-- Complete Figma design file
-- Email support
+# Terminal 2 - Backend
+cd server
+npm start
+```
 
-To learn more about pro version features and pricing, visit our [pricing page](https://tailadmin.com/pricing).
+**Option 2: Use VS Code Tasks (Recommended)**
 
-## Changelog
+1. Open the project in VS Code
+2. Press `Ctrl + Shift + P` (or `Cmd + Shift + P` on Mac)
+3. Type "Tasks: Run Task"
+4. Select "Start Frontend" and "Start Backend"
 
-### Version 2.0.2 - [March 25, 2025]
+## 🌐 Access the Application
 
-- Upgraded to React 19
-- Included overrides for packages to prevent peer dependency errors.
-- Migrated from react-flatpickr to flatpickr package for React 19 support
+Once both servers are running:
 
-### Version 2.0.1 - [February 27, 2025]
+- **Frontend**: http://localhost:5173/
+- **Backend API**: http://localhost:3001/
+- **Health Check**: http://localhost:3001/health
+- **NASA Simulator**: http://localhost:5173/nasa/simulator
 
-#### Update Overview
+## 📚 Project Structure
 
-- Upgraded to Tailwind CSS v4 for better performance and efficiency.
-- Updated class usage to match the latest syntax and features.
-- Replaced deprecated class and optimized styles.
+```
+ASTROWORLD_NASA_SPACE_APPS/
+├── public/                     # Static assets
+│   ├── images/                # Optimized images
+│   └── data/                  # NASA research data
+├── src/                       # Frontend source code
+│   ├── components/            # Reusable components
+│   │   ├── chat/             # AI chatbot components
+│   │   ├── nasa/             # NASA-specific components
+│   │   ├── space/            # Space simulation components
+│   │   └── ui/               # UI components
+│   ├── pages/                # Application pages
+│   │   ├── nasa/             # NASA research pages
+│   │   └── AuthPages/        # Authentication pages
+│   ├── services/             # API services
+│   ├── stores/               # State management
+│   └── hooks/                # Custom React hooks
+├── server/                   # Backend server
+│   ├── chat-server.js        # AI chat API
+│   └── package.json         # Backend dependencies
+└── package.json             # Frontend dependencies
+```
 
-#### Next Steps
+## 🔧 Available Scripts
 
-- Run npm install or yarn install to update dependencies.
-- Check for any style changes or compatibility issues.
-- Refer to the Tailwind CSS v4 [Migration Guide](https://tailwindcss.com/docs/upgrade-guide) on this release. if needed.
-- This update keeps the project up to date with the latest Tailwind improvements. 🚀
+### Frontend Scripts
 
-### Version 2.0.0 - [February 2025]
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run preview      # Preview production build
+npm run lint         # Run ESLint
+```
 
-A major update with comprehensive redesign and modern React patterns implementation.
+### Backend Scripts
 
-#### Major Improvements
+```bash
+cd server
+npm start           # Start production server
+npm run dev         # Start development server with nodemon
+```
 
-- Complete UI redesign with modern React patterns
-- New features: collapsible sidebar, chat, and calendar
-- Improved performance and accessibility
-- Updated data visualization using ApexCharts
+## 🎯 Key Features Explained
 
-#### Key Features
+### 1. NASA Data Explorer
+- Browse research papers from NASA's space biology database
+- Filter and search through scientific publications
+- View detailed paper information and summaries
 
-- Redesigned dashboards (Ecommerce, Analytics, Marketing, CRM)
-- Enhanced navigation with React Router integration
-- Advanced tables with sorting and filtering
-- Calendar with drag-and-drop support
-- New UI components and improved existing ones
+### 2. AI Research Assistant
+- Ask questions about research papers
+- Get intelligent summaries and insights
+- Quick prompt suggestions for common queries
+- Context-aware responses based on paper content
 
-#### Breaking Changes
+### 3. Bion-M1 Mouse Simulator
+- Simulate space conditions effects on biological systems
+- Adjust mission parameters (duration, genetic strain, activity level)
+- View real-time physiological changes
+- Compare different genetic strains
+- Longitudinal health predictions
 
-- Updated sidebar component API
-- Migrated charts to ApexCharts
-- Revised authentication system
+### 4. Data Visualization
+- Interactive charts and graphs
+- Real-time data updates
+- Export capabilities
+- Responsive design for all devices
 
-[Read more](https://tailadmin.com/docs/update-logs/react) on this release.
+## 🔑 Environment Variables
 
-### Version 1.3.7 - [June 20, 2024]
+### Required Environment Variables
 
-#### Enhancements
+```env
+# OpenAI API Configuration
+OPENAI_API_KEY=your_openai_api_key_here
 
-1. Remove Repetition of DefaultLayout in every Pages
-2. Add ClickOutside Component for reduce repeated functionality in Header Message, Notification and User Dropdowns.
+# Server Configuration
+PORT=3001
+```
 
-### Version 1.3.6 - [Jan 31, 2024]
+### Getting OpenAI API Key
 
-#### Enhancements
+1. Visit [OpenAI Platform](https://platform.openai.com/)
+2. Sign up or log in to your account
+3. Navigate to API Keys section
+4. Create a new API key
+5. Copy the key and add it to your `.env` file
 
-1. Integrate flatpickr in [Date Picker/Form Elements]
-2. Change color after select an option [Select Element/Form Elements].
-3. Make it functional [Multiselect Dropdown/Form Elements].
-4. Make best value editable [Pricing Table One/Pricing Table].
-5. Rearrange Folder structure.
+## 🚀 Deployment
 
-### Version 1.2.0 - [Apr 28, 2023]
+### Frontend Deployment (Vercel/Netlify)
 
-- Add Typescript in TailAdmin React.
+```bash
+npm run build
+```
 
-### Version 1.0.0 - Initial Release - [Mar 13, 2023]
+The built files will be in the `dist` directory.
 
-- Initial release of TailAdmin React.
+### Backend Deployment (Railway/Heroku)
 
-## License
+1. Ensure your `.env` file is properly configured
+2. Deploy the `server` directory
+3. Set environment variables in your hosting platform
 
-TailAdmin React.js Free Version is released under the MIT License.
+## 🤝 Contributing
 
-## Support
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-If you find this project helpful, please consider giving it a star on GitHub. Your support helps us continue developing
-and maintaining this template.
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## 🙏 Acknowledgments
+
+- **NASA** for providing the space biology research data
+- **OpenAI** for the AI research assistance capabilities
+- **TailAdmin** for the beautiful UI components
+- **React Community** for the amazing ecosystem
+
+## 📞 Support
+
+If you encounter any issues or have questions:
+
+1. Check the [Issues](https://github.com/RNGM7A/ASTROWORLD_NASA_SPACE_APPS/issues) page
+2. Create a new issue with detailed information
+3. Join our community discussions
+
+## 🌟 Star the Project
+
+If you find this project helpful, please consider giving it a star on GitHub! Your support helps us continue developing and maintaining this platform.
+
+---
+
+**Built with ❤️ for NASA Space Apps Challenge 2024**
+
+*Exploring the frontiers of space biology research through innovative technology.*
