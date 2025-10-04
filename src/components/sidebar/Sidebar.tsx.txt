@@ -1,0 +1,39 @@
+import { Link } from "react-router-dom";
+import { useSidebar } from "../../context/SidebarContext";
+import { FaRocket, FaTachometerAlt } from "react-icons/fa";
+
+export default function Sidebar() {
+  const { isExpanded, isMobileOpen } = useSidebar();
+
+  return (
+    <aside
+      className={`
+        bg-gray-900 text-white h-screen fixed top-0 left-0 z-40
+        transition-all duration-300
+        ${isExpanded ? "w-64" : "w-20"}
+        ${isMobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
+      `}
+    >
+      {/* Logo / Title */}
+      <div className="flex items-center gap-2 px-4 py-4 text-xl font-bold">
+        <FaRocket className="text-blue-400" />
+        {isExpanded && <span>NASA BioExplorer</span>}
+      </div>
+
+      {/* Menu */}
+      <nav className="mt-6">
+        <ul className="space-y-2">
+          <li>
+            <Link
+              to="/"
+              className="flex items-center gap-3 px-4 py-2 hover:bg-gray-800 rounded"
+            >
+              <FaTachometerAlt />
+              {isExpanded && <span>Dashboard</span>}
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+  );
+}
