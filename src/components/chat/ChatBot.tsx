@@ -16,8 +16,6 @@ interface ChatBotProps {
 }
 
 const ChatBot: React.FC<ChatBotProps> = ({ paperTitle, paperSummary }) => {
-  const [selectedSuggestion, setSelectedSuggestion] = useState<string | null>(null);
-  const [response, setResponse] = useState<string>('');
   const [customQuestion, setCustomQuestion] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -34,8 +32,6 @@ const ChatBot: React.FC<ChatBotProps> = ({ paperTitle, paperSummary }) => {
 
   const onClose = () => {
     setIsOpen(false);
-    setSelectedSuggestion(null);
-    setResponse('');
     setCustomQuestion('');
     setChatHistory([]);
     setIsInChatMode(false);
@@ -46,62 +42,46 @@ const ChatBot: React.FC<ChatBotProps> = ({ paperTitle, paperSummary }) => {
       id: 'summary',
       title: 'Research Summary',
       description: 'Get a clear overview of the study',
+      prompt: 'Can you provide a comprehensive summary of this research paper?',
       icon: <FileText className="w-5 h-5" />,
     },
     {
       id: 'objectives',
       title: 'Research Objectives',
       description: 'What were the main goals?',
+      prompt: 'What were the main research objectives and goals of this study?',
       icon: <Target className="w-5 h-5" />,
     },
     {
       id: 'methods',
       title: 'Methodology',
       description: 'How was the research conducted?',
+      prompt: 'Can you explain the methodology and research approach used in this study?',
       icon: <Zap className="w-5 h-5" />,
     },
     {
       id: 'findings',
       title: 'Key Findings',
       description: 'What were the main results?',
+      prompt: 'What are the key findings and results of this research?',
       icon: <TrendingUp className="w-5 h-5" />,
     },
     {
       id: 'implications',
       title: 'Implications',
       description: 'Why does this matter?',
+      prompt: 'What are the implications and significance of these findings?',
       icon: <Lightbulb className="w-5 h-5" />,
     },
     {
       id: 'applications',
       title: 'Applications',
       description: 'How can this be used?',
+      prompt: 'What are the potential applications and future directions for this research?',
       icon: <Users className="w-5 h-5" />,
     }
   ];
 
-  const handleSuggestionClick = (suggestion: typeof suggestions[0]) => {
-    setSelectedSuggestion(suggestion.id);
-    setResponse('');
-
-    const responses = {
-      summary: `**What is this study about?**\n\nThis research investigates how living organisms respond to space conditions. The study looks at biological changes that happen in microgravity environments.\n\n**Key findings:**\n• Documents specific biological responses\n• Shows how organisms adapt to space\n• Provides data for future space missions`,
-      
-      objectives: `**What did they want to find out?**\n\n**Main goal:** Understand how space affects living things\n\n**Specific questions:**\n• How do biological systems change in space?\n• What adaptations occur over time?\n• Which factors are most important?\n\n**Why this matters:** Helps prepare for longer space missions`,
-      
-      methods: `**How did they do the research?**\n\n**Setup:**\n• Simulated space conditions in the lab\n• Used controlled experiments\n• Measured multiple biological factors\n\n**Data collection:**\n• Regular monitoring of test subjects\n• Careful measurement and recording\n• Statistical analysis of results\n\n**Why this approach:** Ensures reliable, repeatable results`,
-      
-      findings: `**What did they discover?**\n\n**Main results:**\n• Clear biological changes were observed\n• Some systems adapted better than others\n• Changes happened at different rates\n\n**Key discoveries:**\n• New insights about space biology\n• Important for astronaut health\n• Foundation for future research`,
-      
-      implications: `**Why is this important?**\n\n**For space exploration:**\n• Helps plan safer space missions\n• Guides health monitoring systems\n• Improves astronaut care protocols\n\n**For science:**\n• Advances our understanding of biology\n• Provides data for future studies\n• Benefits both space and Earth research`,
-      
-      applications: `**How can this be used?**\n\n**Immediate uses:**\n• Better space mission planning\n• Improved astronaut health monitoring\n• Development of countermeasures\n\n**Future possibilities:**\n• Longer space missions\n• Better understanding of gravity's effects\n• Applications for Earth-based medicine`
-    };
-
-    setTimeout(() => {
-      setResponse(responses[suggestion.id as keyof typeof responses]);
-    }, 1000);
-  };
 
   const handleCustomQuestion = async () => {
     if (!customQuestion.trim() || isLoading) return;
@@ -284,14 +264,56 @@ const ChatBot: React.FC<ChatBotProps> = ({ paperTitle, paperSummary }) => {
                       {suggestions.map((suggestion) => (
                         <motion.button
                           key={suggestion.id}
-                          onClick={() => {
+                          onClick={async () => {
                             setCustomQuestion(suggestion.prompt);
-                            handleCustomQuestion();
+                            setIsLoading(true);
+                            const userMessage = suggestion.prompt;
+                            
+                            // Add user message to chat history
+                            const newUserMessage: ChatMessage = {
+                              id: Date.now().toString(),
+                              type: 'user',
+                              content: userMessage,
+                              timestamp: new Date()
+                            };
+                            
+                            setChatHistory(prev => [...prev, newUserMessage]);
+                            setIsInChatMode(true);
+
+                            try {
+                              const response = await sendChatMessage({
+                                message: userMessage,
+                                paperTitle,
+                                paperSummary
+                              });
+
+                              // Add AI response to chat history
+                              const aiMessage: ChatMessage = {
+                                id: (Date.now() + 1).toString(),
+                                type: 'ai',
+                                content: response.response,
+                                timestamp: new Date()
+                              };
+                              
+                              setChatHistory(prev => [...prev, aiMessage]);
+                            } catch (error) {
+                              console.error('Chat API Error:', error);
+                              const errorMessage: ChatMessage = {
+                                id: (Date.now() + 1).toString(),
+                                type: 'ai',
+                                content: 'Sorry, I encountered an error while processing your question. Please try again.',
+                                timestamp: new Date()
+                              };
+                              setChatHistory(prev => [...prev, errorMessage]);
+                            } finally {
+                              setIsLoading(false);
+                            }
                           }}
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                           transition={{ duration: 0.15, ease: 'easeOut' }}
                           className="p-2 bg-slate-700/50 border border-cyan-400/20 rounded-lg hover:bg-cyan-500/10 hover:border-cyan-400/40 transition-all duration-200 text-left group"
+                          disabled={isLoading}
                         >
                           <div className="flex items-center gap-2">
                             <div className="text-cyan-400 group-hover:text-cyan-300 transition-colors">
